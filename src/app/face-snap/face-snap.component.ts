@@ -14,6 +14,8 @@ export class FaceSnapComponent implements OnInit {
   createdAt!: Date;
   snaps!: number;
   imageUrl!: string;
+  snapButtonText!: string;
+  ifSnap!: boolean;
 
   // Permet d'initialiser les propriétés de la classe
   ngOnInit(): void {
@@ -24,5 +26,27 @@ export class FaceSnapComponent implements OnInit {
     this.snaps = 0;
     this.imageUrl =
       'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg';
+    this.snapButtonText = ' Oh Snap !';
+    this.ifSnap = false;
+  }
+
+  onSnap(): void {
+    if (!this.ifSnap) {
+      this.snap();
+    } else {
+      this.unSnap();
+    }
+  }
+
+  unSnap() {
+    this.snaps--;
+    this.ifSnap = false;
+    this.snapButtonText = ' Oh Snap !';
+  }
+
+  snap() {
+    this.snaps++;
+    this.ifSnap = true;
+    this.snapButtonText = 'Delete Snap :(';
   }
 }

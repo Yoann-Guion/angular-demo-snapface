@@ -1,11 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaceSnap } from '../models/face-snap';
-import { NgClass, NgStyle } from '@angular/common';
+import {
+  CurrencyPipe,
+  DatePipe, DecimalPipe,
+  LowerCasePipe,
+  NgClass,
+  NgStyle, PercentPipe,
+  TitleCasePipe,
+  UpperCasePipe,
+} from '@angular/common';
 
 @Component({
   selector: 'app-face-snap',
   standalone: true,
-  imports: [NgStyle, NgClass],
+  imports: [NgStyle, NgClass, TitleCasePipe, DatePipe],
   templateUrl: './face-snap.component.html',
   styleUrl: './face-snap.component.scss',
 })
@@ -13,7 +21,8 @@ export class FaceSnapComponent implements OnInit {
   @Input() faceSnap!: FaceSnap;
 
   snapButtonText!: string;
-  ifSnap!: boolean;
+  ifSnap!: boolean
+  myLargeNumber : number = 47;
 
   // Permet d'initialiser les propriétés de la classe
   ngOnInit(): void {
@@ -31,7 +40,6 @@ export class FaceSnapComponent implements OnInit {
 
   unSnap() {
     this.faceSnap.removeSnap();
-    console.log(this.faceSnap.snaps);
     this.ifSnap = false;
     this.snapButtonText = ' Oh Snap !';
   }
@@ -40,6 +48,5 @@ export class FaceSnapComponent implements OnInit {
     this.faceSnap.addSnap();
     this.ifSnap = true;
     this.snapButtonText = 'Delete Snap :(';
-    console.log(this.faceSnap.snaps);
   }
 }

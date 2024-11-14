@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 
 @Component({
@@ -11,4 +11,11 @@ import {RouterLink} from '@angular/router';
 })
 export class LandingPageComponent {
 
+  constructor(private router: Router) {
+
+  }
+
+  onContinue() {
+    this.router.navigateByUrl('facesnaps');
+  }
 }
